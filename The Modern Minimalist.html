@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Engagement Invitation - Khalid & Habiba</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital,wght@1,400&family=Inter:wght@400;700;800&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. FONTS & OFF-WHITE FLORAL VARIABLES
+           ========================================= */
+        :root {
+            --offwhite: #F8F6F0;    
+            --rose: #a67b82;        
+            --rose-light: rgba(166, 123, 130, 0.15);   
+            --text-dark: #2c2c2c;   
+            --text-muted: #666666;      
+            --white: #ffffff;
+            --border-color: rgba(166, 123, 130, 0.3);
+            --card-bg: rgba(255, 255, 255, 0.75); 
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: auto; overflow-y: scroll; } 
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark); 
+            background-color: var(--offwhite);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* DYNAMIC RESPONSIVE BACKGROUND IMAGE */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("pc_background.webp"); 
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.3);
+        }
+
+        @media screen and (max-width: 768px) {
+            body::before {
+                background-image: url("mobile_background.webp");
+                background-position: top center;
+            }
+        }
+
+        /* =========================================
+           2. SOLID OPAQUE OVERLAY & OPEN BUTTON
+           ========================================= */
+        #blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--offwhite); 
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease; 
+        }
+
+        .open-circle-btn {
+            width: 140px;
+            height: 140px;
+            background: var(--white);
+            color: var(--rose); 
+            border-radius: 50%;
+            border: 3px solid var(--rose); 
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(166, 123, 130, 0.2); 
+            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        .open-circle-btn:hover {
+            transform: scale(1.05);
+            background: var(--rose);
+            color: var(--white);
+            box-shadow: 0 15px 40px rgba(166, 123, 130, 0.4);
+        }
+
+        /* =========================================
+           3. MAIN CONTENT
+           ========================================= */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 80px 20px 150px 20px;
+            margin: 0 auto;
+        }
+
+        .title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 30px; 
+            letter-spacing: 5px; 
+            margin-bottom: 10px; 
+            text-transform: uppercase;
+            color: var(--rose);
+        }
+
+        .announcement { 
+            font-size: 12px; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            line-height: 1.6; 
+            margin-bottom: 20px; 
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .blue-line { width: 40px; height: 1px; background-color: var(--rose); margin: 0 auto 30px; }
+        .mini-blue-line { width: 45px; height: 2px; background-color: var(--rose); margin: 40px auto 15px; }
+
+        .names-stack { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 50px; }
+        .main-name { font-family: 'Cinzel', serif; font-size: 34px; letter-spacing: 6px; font-weight: 700; color: var(--text-dark); }
+        .role { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--text-muted); }
+        .small-ampersand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 28px; color: var(--rose); }
+
+        /* =========================================
+           4. GALLERY, INFO, COUNTDOWN & CALENDAR
+           ========================================= */
+        .gallery-title { font-family: 'Cinzel', serif; font-size: 24px; letter-spacing: 5px; margin-bottom: 25px; font-weight: 700; color: var(--rose); }
+        .photo-grid { display: flex; justify-content: center; margin-bottom: 50px; }
+
+        /* Updated Photo Placeholder */
+        .photo-placeholder { 
+            background: var(--card-bg); 
+            border-radius: 15px; 
+            width: 100%;
+            max-width: 300px;
+            height: 380px; 
+            box-shadow: 0 10px 30px rgba(166, 123, 130, 0.15); 
+            border: 1.5px dashed var(--rose);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--rose);
+            backdrop-filter: blur(5px);
+        }
+        .photo-placeholder i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: var(--rose);
+        }
+        .photo-placeholder p {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--rose);
+        }
+
+        .reception-section { margin-bottom: 30px; }
+        .big-time { display: block; font-size: 40px; font-weight: 800; color: var(--text-dark); }
+        .big-date { display: block; font-size: 16px; font-weight: 700; letter-spacing: 1px; margin: 10px 0 20px; color: var(--text-muted); }
+
+        .countdown-container { display: flex; justify-content: center; gap: 12px; margin-top: 25px; }
+        .time-unit { background: var(--white); padding: 12px 0; border-radius: 12px; width: 75px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(166, 123, 130, 0.15); border: 1px solid var(--border-color); }
+        .time-unit span { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 5px; color: var(--rose); font-variant-numeric: tabular-nums; }
+        .time-unit label { font-size: 9px; font-weight: 800; color: var(--text-muted); display: block; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Restored Calendar Wrapper CSS */
+        .calendar-wrapper { width: 100%; max-width: 360px; margin: 30px auto 50px auto; border-radius: 20px; box-shadow: 0 15px 35px rgba(166, 123, 130, 0.15); background: var(--white); border: 1px solid var(--border-color); overflow: hidden; }
+        .calendar-wrapper img { width: 100%; display: block; }
+
+        .venue-name { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--text-dark); }
+        .venue-location { font-size: 14px; line-height: 1.6; margin: 5px 0 15px; color: var(--text-muted); font-style: italic; }
+        .map-link-btn { display: inline-block; padding: 14px 45px; background: transparent; border: 1.5px solid var(--rose); color: var(--rose); border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s ease; }
+        .map-link-btn:hover { background: var(--rose-light); }
+
+        /* =========================================
+           5. DAY SCHEDULE & RSVP
+           ========================================= */
+        .schedule-section { margin-top: 50px; margin-bottom: 50px; padding: 0 10px; }
+        .timeline { position: relative; max-width: 400px; margin: 40px auto; }
+        .timeline-item { display: flex; align-items: center; width: 100%; margin-bottom: 40px; position: relative; z-index: 1; }
+        .time { flex: 1; text-align: right; padding-right: 25px; font-size: 20px; font-weight: 700; color: var(--text-dark); }
+        .dot-container { width: 20px; display: flex; justify-content: center; }
+        .dot { width: 14px; height: 14px; background-color: var(--rose); border-radius: 50%; border: 3px solid var(--offwhite); box-shadow: 0 0 10px rgba(166, 123, 130, 0.4); }
+        .event { flex: 1; text-align: left; padding-left: 15px; font-size: 16px; font-weight: 800; color: var(--text-muted); }
+
+        .rsvp-section { margin-bottom: 50px; padding: 0 10px; }
+        .rsvp-placeholder-box { background: var(--card-bg); padding: 25px; border-radius: 25px; max-width: 400px; margin: 0 auto; border: 1px dashed var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); backdrop-filter: blur(5px); }
+        .rsvp-input { width: 100%; padding: 15px 20px; border-radius: 15px; border: 1px solid var(--border-color); background: var(--white); color: var(--text-dark); margin-bottom: 15px; font-family: 'Inter', sans-serif; outline: none; font-size: 14px; }
+        .guest-counter-container { display: flex; justify-content: space-between; align-items: center; background: transparent; padding: 12px 20px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px; }
+        .guest-label { font-size: 13px; color: var(--text-muted); font-weight: 700; }
+        .counter-controls { display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .cnt-btn { display: flex; align-items: center; justify-content: center; background: transparent; color: var(--rose); border: none; font-size: 20px; cursor: not-allowed; }
+        #guest-count-display { font-size: 20px; font-weight: 800; min-width: 30px; text-align: center; color: var(--text-dark); }
+        .rsvp-confirm-btn { width: 100%; padding: 16px; background: var(--rose); color: var(--white); border: none; border-radius: 50px; font-weight: 700; font-size: 15px; cursor: not-allowed; transition: 0.3s; opacity: 0.6; }
+
+        /* =========================================
+           6. GUEST GALLERY & VOICE RECORD 
+           ========================================= */
+        .upload-btn { background: transparent; border: 1px dashed var(--rose); color: var(--rose); padding: 20px; border-radius: 15px; cursor: pointer; width: 100%; margin-bottom: 20px; transition: all 0.3s ease; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .upload-btn:hover { background: var(--rose-light); }
+
+        .guest-photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .guest-photo-item { position: relative; aspect-ratio: 1; background: var(--white); border-radius: 10px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 24px; overflow: hidden; cursor: pointer; }
+        .guest-photo-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+        /* FULLSCREEN LIGHTBOX GALLERY MODAL */
+        #lightbox-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 30000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        #lightbox-modal img { max-width: 85%; max-height: 85vh; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); object-fit: contain; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 15px 20px; font-size: 24px; cursor: pointer; border-radius: 50%; transition: 0.3s; z-index: 30001; }
+        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.4); }
+        #lightbox-prev { left: 20px; }
+        #lightbox-next { right: 20px; }
+        #lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 35px; color: white; cursor: pointer; font-weight: bold; z-index: 30001; }
+
+        .delete-btn { position: absolute; top: 8px; right: 8px; background: rgba(255, 255, 255, 0.85); color: var(--rose); border: 1px solid var(--border-color); border-radius: 20px; padding: 6px 14px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; letter-spacing: 1px; font-family: 'Inter', sans-serif; backdrop-filter: blur(4px); transition: all 0.3s ease; }
+        .delete-btn:hover { background: var(--rose); color: var(--white); }
+
+        .voice-btn { width: 80px; height: 80px; border-radius: 50%; background: var(--white); border: 2px solid var(--rose); color: var(--rose); font-size: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .voice-btn:hover { background: var(--rose-light); transform: scale(1.05); }
+        .voice-messages-container { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .voice-item { position: relative; background: var(--card-bg); padding: 10px 15px; border-radius: 15px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .voice-item audio { width: 85%; height: 35px; outline: none; }
+
+        /* =========================================
+           7. GUESTBOOK SECTION & BUTTONS
+           ========================================= */
+        .guestbook-section { margin-top: 50px; margin-bottom: 20px; }
+        .guestbook-form { max-width: 350px; margin: 20px auto; display: flex; flex-direction: column; gap: 12px; }
+        .guestbook-form input, .guestbook-form textarea { padding: 15px; border-radius: 15px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 15px; width: 100%; outline: none; transition: 0.3s; backdrop-filter: blur(5px); }
+        .guestbook-form input::placeholder, .guestbook-form textarea::placeholder { color: var(--text-muted); opacity: 0.7; }
+        .guestbook-form input:focus, .guestbook-form textarea:focus { border-color: var(--rose); box-shadow: 0 0 10px var(--rose-light); }
+
+        .oval-btn-small { padding: 15px; background: var(--rose); color: var(--white); border-radius: 50px; border: none; font-weight: 800; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .oval-btn-small:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--rose-light); }
+
+        .wish-card { position: relative; background: var(--card-bg); padding: 20px; border-radius: 20px; margin-top: 15px; text-align: left; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); backdrop-filter: blur(5px); }
+        .wish-card h4 { font-size: 14px; font-weight: 800; color: var(--rose); text-transform: uppercase; margin-bottom: 5px; }
+        .wish-card p { font-size: 14px; color: var(--text-dark); line-height: 1.5; }
+        .delete-wish-btn { position: absolute; top: 15px; right: 15px; background: rgba(166, 123, 130, 0.15); color: var(--rose); border: none; padding: 5px 10px; border-radius: 5px; font-size: 11px; cursor: pointer; transition: 0.3s; font-weight: 700; text-transform: uppercase; z-index: 10; }
+        .delete-wish-btn:hover { background: var(--rose); color: var(--white); transform: scale(1.05); }
+        
+        .oval-btn { display: inline-block; padding: 16px 70px; background: transparent; color: var(--rose); border: 1px solid var(--rose); border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 800; margin-top: 40px; transition: 0.3s; cursor: pointer; }
+        .oval-btn:hover { background: var(--rose-light); }
+
+        /* =========================================
+           8. MIRZAM CREDIT FOOTER 
+           ========================================= */
+        .credit-badge-container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; padding-bottom: 20px; gap: 10px; }
+        .made-by-text { font-size: 11px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 1.5px; font-weight: 700; }
+        .mirzam-circular-logo { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--rose); box-shadow: 0 4px 15px rgba(166, 123, 130, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .mirzam-circular-logo:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(166, 123, 130, 0.4); }
+
+        /* =========================================
+           9. FLOATING TAB BAR & MODALS 
+           ========================================= */
+        .floating-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 500px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); height: 70px; border-radius: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid var(--border-color); z-index: 9999; display: flex; align-items: center; }
+        .nav-container { display: flex; width: 100%; justify-content: space-around; align-items: center; padding: 0 10px; }
+        .nav-item { flex: 1; text-align: center; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; cursor: pointer; border: none; background: none; transition: color 0.3s ease; }
+        .nav-item:hover { color: var(--rose); }
+        .nav-item i { font-size: 18px; }
+        .nav-item span { font-size: 9px; font-weight: 800; text-transform: uppercase; }
+
+        /* Submenus */
+        .location-submenu { position: absolute; bottom: 85px; transform: translateX(-50%) scale(0); background: var(--card-bg); border: 1px solid var(--border-color); width: 180px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: bottom center; visibility: hidden; opacity: 0; backdrop-filter: blur(10px); }
+        .location-submenu.active { transform: translateX(-50%) scale(1); visibility: visible; opacity: 1; }
+        .location-submenu a { display: flex; align-items: center; gap: 12px; padding: 18px; text-decoration: none; color: var(--rose); font-size: 14px; font-weight: 700; transition: 0.2s; }
+        .location-submenu a:hover { background: var(--rose-light); }
+        .menu-divider { height: 1px; background: var(--border-color); margin: 0 10px; }
+
+        /* Modals */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(248, 246, 240, 0.9); z-index: 20000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--card-bg); padding: 30px; border-radius: 25px; width: 90%; max-width: 380px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 1px solid var(--border-color); animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; color: var(--text-muted); cursor: pointer; }
+
+        @media screen and (max-width: 768px) {
+            .main-content { padding: 40px 15px 140px 15px; }
+            .title { font-size: 24px; }
+            .main-name { font-size: 28px; }
+            .countdown-container { gap: 8px; }
+            .time-unit { width: 65px; padding: 10px 0; }
+            .time-unit span { font-size: 22px; }
+            .floating-nav { bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FULLSCREEN LIGHTBOX GALLERY MODAL -->
+    <div id="lightbox-modal">
+        <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav" id="lightbox-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Fullscreen View">
+        <button class="lightbox-nav" id="lightbox-next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <!-- COMPLETELY OPAQUE OVERLAY -->
+    <div id="blur-overlay">
+        <button class="open-circle-btn" onclick="openInvitation()">Open</button>
+    </div>
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="weddingMusic" loop>
+        <source src="wedding-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content" id="main-content-section">
+        <h1 class="title">ENGAGEMENT INFO</h1>
+        
+        <p class="announcement">You are invited to the<br>engagement party of</p>
+        <div class="blue-line"></div>
+
+        <div class="names-stack">
+            <h2 class="main-name">KHALID</h2>
+            <span class="role">FIANCÉ</span>
+            <span class="small-ampersand">&</span>
+            <h2 class="main-name">HABIBA</h2>
+            <span class="role">FIANCÉE</span>
+        </div>
+
+        <div class="gallery-section" id="gallery-section">
+            <h3 class="gallery-title">PHOTO GALLERY</h3>
+            <div class="photo-grid">
+                <!-- UPDATED COUPLE PHOTO PLACEHOLDER -->
+                <div class="photo-placeholder">
+                    <i class="far fa-image"></i>
+                    <p>Couple Photo Placeholder</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reception-section" id="reception-section">
+            <div class="mini-blue-line"></div>
+            <h2 class="gallery-title">EVENT INFO</h2>
+            <div class="time-date-box">
+                <span class="big-time">08:00 PM</span>
+                <span class="big-date">FRIDAY | 04 | DECEMBER</span>
+            </div>
+            
+            <!-- COUNTDOWN SECTION -->
+            <div id="countdown" class="countdown-container">
+                <div class="time-unit"><span id="days">00</span><label>Days</label></div>
+                <div class="time-unit"><span id="hours">00</span><label>Hours</label></div>
+                <div class="time-unit"><span id="minutes">00</span><label>Mins</label></div>
+                <div class="time-unit"><span id="seconds">00</span><label>Secs</label></div>
+            </div>
+        </div>
+
+        <!-- CALENDAR SECTION (Updated to use Image) -->
+        <div class="calendar-wrapper">
+            <img src="The_Modern_Minimalist_calander.webp" alt="December 2026 Calendar">
+        </div>
+
+        <div class="venue-section" id="venue-section">
+            <div class="mini-blue-line"></div> 
+            <h3 class="gallery-title">VENUE LOCATION</h3>
+            <p class="venue-name">[VENUE NAME]</p>
+            <p class="venue-location">[Write your specific venue location or address here]</p>
+            <a href="#" target="_blank" class="map-link-btn">VIEW ON MAP</a>
+        </div>
+
+        <!-- DAY SCHEDULE SECTION -->
+        <div class="schedule-section" id="schedule-section">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">DAY SCHEDULE</h3>
+            <p class="announcement">A glimpse of our special night</p>
+            <div class="timeline">
+                <div class="timeline-item"><div class="time">08:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">Welcome</div></div>
+                <div class="timeline-item"><div class="time">09:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">Katb Ketab</div></div>
+                <div class="timeline-item"><div class="time">09:30</div><div class="dot-container"><div class="dot"></div></div><div class="event">Party</div></div>
+                <div class="timeline-item"><div class="time">10:30</div><div class="dot-container"><div class="dot"></div></div><div class="event">Buffet</div></div>
+                <div class="timeline-item"><div class="time">11:00</div><div class="dot-container"><div class="dot"></div></div><div class="event">End</div></div>
+            </div>
+        </div>
+
+        <!-- RSVP SECTION -->
+        <div class="rsvp-section" id="rsvp-section">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">ATTENDANCE</h3>
+            <p class="announcement" style="margin-bottom: 20px;">Will you join us? Confirm your attendance</p>
+            
+            <div class="rsvp-placeholder-box">
+                <input type="text" class="rsvp-input" placeholder="Your name" disabled style="cursor: not-allowed; opacity: 0.6;">
+                
+                <div class="guest-counter-container" style="opacity: 0.6;">
+                    <span class="guest-label">Accompanying guests</span>
+                    <div class="counter-controls">
+                        <button type="button" class="cnt-btn" disabled>−</button>
+                        <span id="guest-count-display">0</span>
+                        <button type="button" class="cnt-btn" disabled>+</button>
+                    </div>
+                </div>
+
+                <button type="button" class="rsvp-confirm-btn" disabled>Confirm Attendance 💍</button>
+            </div>
+        </div>
+
+        <!-- GUEST PHOTO-ONLY GALLERY SECTION -->
+        <div class="guest-gallery-section" id="guest-gallery-section" style="margin-top: 50px;">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">GUEST MEMORIES</h3>
+            <p class="announcement">Share your favorite photos with us</p>
+
+            <input type="file" id="photo-upload-input" accept="image/*" style="display: none;">
+            <button class="upload-btn" id="upload-photo-btn">
+                <i class="fas fa-camera-retro" style="font-size: 24px; margin-bottom: 10px; display: block;"></i>
+                SHARE A PHOTO
+            </button>
+            <div class="guest-photo-grid" id="guest-photo-grid">
+                <!-- Dynamically populated photos -->
+            </div>
+        </div>
+
+        <!-- VOICE MESSAGE SECTION -->
+        <div class="voice-message-section" id="voice-message-section" style="margin-top: 50px;">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">VOICE WISHES</h3>
+            <p class="announcement">Record a personal voice message for the couple</p>
+            <button class="voice-btn" id="record-voice-btn">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <p id="voice-status-text" style="font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Tap to Record</p>
+
+            <div class="voice-messages-container" id="voice-messages-display">
+                <!-- Dynamically populated voices -->
+            </div>
+        </div>
+
+        <!-- GUESTBOOK SECTION -->
+        <div class="guestbook-section" id="guestbook-section">
+            <div class="mini-blue-line"></div>
+            <h3 class="gallery-title">GUESTBOOK</h3>
+            <p class="announcement" style="margin-bottom: 20px;">Leave your blessings & wishes for the couple</p>
+            
+            <form id="guestbook-form" class="guestbook-form">
+                <input type="text" id="guest-name" placeholder="Your Name" required>
+                <textarea id="guest-wish" placeholder="Write your wishes here..." rows="4" required></textarea>
+                <button type="submit" class="oval-btn-small">SEND WISHES</button>
+            </form>
+            <div id="wishes-display" class="wishes-container"></div>
+        </div>
+        
+        <!-- GO BACK BUTTON -->
+        <button onclick="window.location.reload()" class="oval-btn">GO BACK</button>
+        
+        <!-- MIRZAM CREDIT BADGE -->
+        <div class="credit-badge-container">
+            <span class="made-by-text">made by Mirzam</span> 
+            <a href="https://mirzaminvitationcards-ops.github.io/mirzam.eg/Mirzam's_Main_page" target="_blank">
+                <img src="Mirazam's-logo.webp" alt="Mirzam Logo" class="mirzam-circular-logo">
+            </a>
+        </div>
+    </div>
+
+    <!-- AFTER PARTY MODAL -->
+    <div id="partyModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h3 class="gallery-title" style="font-size: 20px; margin-top: 10px;">AFTER PARTY</h3>
+            <div class="mini-blue-line"></div>
+            <p class="venue-name" style="font-size: 18px;">Private Celebration</p>
+            <p class="venue-location">Click below to find the secret location.</p>
+            <a href="#" target="_blank" class="map-link-btn" style="margin-top: 10px;">OPEN IN GOOGLE MAPS</a>
+        </div>
+    </div>
+
+    <!-- FLOATING NAVIGATION BAR WITH SUBMENUS -->
+    <nav class="floating-nav">
+        <!-- Location Submenu -->
+        <div id="locationSubMenu" class="location-submenu" style="left: 60%;">
+            <a href="javascript:void(0)" onclick="scrollToSection('venue-section')"><i class="fas fa-map-marker-alt"></i> Venue</a>
+            <div class="menu-divider"></div>
+            <a href="javascript:void(0)" onclick="accessAfterParty()"><i class="fas fa-glass-cheers"></i> After Party</a>
+        </div>
+
+        <!-- Gallery Submenu -->
+        <div id="gallerySubMenu" class="location-submenu" style="left: 20%;">
+            <a href="javascript:void(0)" onclick="scrollToSection('gallery-section')"><i class="far fa-image"></i> Couple</a>
+            <div class="menu-divider"></div>
+            <a href="javascript:void(0)" onclick="scrollToSection('guest-gallery-section')"><i class="fas fa-camera-retro"></i> Memories</a>
+        </div>
+
+        <div class="nav-container">
+            <a href="javascript:void(0)" onclick="toggleGalleryMenu(event)" class="nav-item">
+                <i class="far fa-images"></i><span>Gallery</span>
+            </a>
+            <a href="javascript:void(0)" onclick="scrollToSection('voice-message-section')" class="nav-item">
+                <i class="fas fa-microphone"></i><span>Voice</span>
+            </a>
+            <a href="javascript:void(0)" onclick="scrollToSection('rsvp-section')" class="nav-item">
+                <i class="far fa-heart"></i><span>RSVP</span>
+            </a>
+            <a href="javascript:void(0)" onclick="toggleLocationMenu(event)" class="nav-item">
+                <i class="fas fa-map-marker-alt"></i><span>Location</span>
+            </a>
+            <a href="javascript:void(0)" onclick="scrollToSection('guestbook-section')" class="nav-item">
+                <i class="far fa-comment-dots"></i><span>Wishes</span>
+            </a>
+            <div class="nav-item" onclick="toggleMusic()" style="cursor:pointer;">
+                <i id="navMusicIcon" class="fas fa-pause"></i>
+                <span id="navMusicText">Stop</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FIREBASE & SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === 'true') {
+            localStorage.setItem('is_wedding_admin', 'true');
+            window.history.replaceState({}, document.title, window.location.pathname);
+            alert("Admin mode activated. You can now delete any message or photo.");
+        }
+        const isAdmin = localStorage.getItem('is_wedding_admin') === 'true';
+
+        let myUserId = localStorage.getItem('wedding_user_id') || 'user_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('wedding_user_id', myUserId);
+
+        const weddingAudio = document.getElementById("weddingMusic");
+        const navMusicIcon = document.getElementById("navMusicIcon");
+        const navMusicText = document.getElementById("navMusicText");
+
+        let autoScrollId;
+        let isAutoScrolling = false;
+
+        function stopAutoScroll(e) {
+            if (e && e.target && e.target.closest('[onclick="toggleMusic()"]')) {
+                return; 
+            }
+            if (isAutoScrolling) {
+                isAutoScrolling = false;
+                cancelAnimationFrame(autoScrollId);
+                window.removeEventListener('wheel', stopAutoScroll);
+                window.removeEventListener('touchmove', stopAutoScroll);
+                window.removeEventListener('mousedown', stopAutoScroll);
+                window.removeEventListener('touchstart', stopAutoScroll); 
+                document.removeEventListener('keydown', stopAutoScroll);
+            }
+        }
+
+        // OPEN INVITATION LOGIC WITH TRACKER
+        function openInvitation() {
+            const overlay = document.getElementById('blur-overlay');
+            
+            /* -- FIREBASE TRACKING SCRIPT COMMENTED OUT -- 
+            db.collection("yj_engagement_opens").doc(myUserId).set({
+                lastOpened: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true }).catch(err => console.log("Tracking error", err));
+            */
+
+            weddingAudio.play().then(() => {
+                updateMusicUI();
+            }).catch(e => console.log("Audio playback failed:", e));
+
+            overlay.style.opacity = '0';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                
+                isAutoScrolling = true;
+                window.addEventListener('wheel', stopAutoScroll, { passive: true });       
+                window.addEventListener('touchmove', stopAutoScroll, { passive: true });   
+                window.addEventListener('touchstart', stopAutoScroll, { passive: true }); 
+                window.addEventListener('mousedown', stopAutoScroll, { passive: true });   
+                document.addEventListener('keydown', stopAutoScroll, { passive: true });   
+
+                function autoScroll() {
+                    if (isAutoScrolling && (window.innerHeight + Math.ceil(window.scrollY) < document.documentElement.scrollHeight)) {
+                        window.scrollBy(0, 1); 
+                        autoScrollId = requestAnimationFrame(autoScroll);
+                    }
+                }
+                autoScroll();
+            }, 1000); 
+        }
+
+        /* --- LIGHTBOX GALLERY NAVIGATION LOGIC --- */
+        let galleryImages = [];
+        let currentIndex = 0;
+
+        function openLightbox(url) {
+            currentIndex = galleryImages.indexOf(url);
+            if (currentIndex === -1) currentIndex = 0;
+            updateLightboxImage();
+            document.getElementById('lightbox-modal').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').style.display = 'none';
+        }
+
+        function changeSlide(direction) {
+            if (galleryImages.length === 0) return;
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = galleryImages.length - 1;
+            } else if (currentIndex >= galleryImages.length) {
+                currentIndex = 0;
+            }
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            if (galleryImages.length > 0) {
+                document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightbox-modal');
+            if (modal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') changeSlide(-1);
+                if (e.key === 'ArrowRight') changeSlide(1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        /* --- NAV TOGGLES --- */
+        function toggleLocationMenu(event) {
+            event.stopPropagation();
+            document.getElementById('locationSubMenu').classList.toggle('active');
+            document.getElementById('gallerySubMenu').classList.remove('active');
+        }
+
+        function toggleGalleryMenu(event) {
+            event.stopPropagation();
+            document.getElementById('gallerySubMenu').classList.toggle('active');
+            document.getElementById('locationSubMenu').classList.remove('active');
+        }
+
+        document.addEventListener('click', (e) => {
+            const locMenu = document.getElementById('locationSubMenu');
+            const galMenu = document.getElementById('gallerySubMenu');
+            if (locMenu && !locMenu.contains(e.target)) locMenu.classList.remove('active');
+            if (galMenu && !galMenu.contains(e.target)) galMenu.classList.remove('active');
+        });
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                stopAutoScroll(); 
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            const locMenu = document.getElementById('locationSubMenu');
+            const galMenu = document.getElementById('gallerySubMenu');
+            if (locMenu) locMenu.classList.remove('active');
+            if (galMenu) galMenu.classList.remove('active');
+        }
+
+        function accessAfterParty() {
+            if (prompt("Access code:") === "6627") {
+                document.getElementById('partyModal').style.display = 'flex';
+            } else {
+                alert("Wrong code.");
+            }
+        }
+
+        function closeModal() { 
+            document.getElementById('partyModal').style.display = 'none'; 
+        }
+
+        function toggleMusic() {
+            if (weddingAudio.paused) {
+                weddingAudio.play().then(updateMusicUI).catch(e => console.log("Playback error"));
+            } else {
+                weddingAudio.pause();
+                updateMusicUI();
+            }
+        }
+
+        function updateMusicUI() {
+            if (weddingAudio.paused) {
+                if (navMusicIcon) navMusicIcon.className = "fas fa-play";
+                if (navMusicText) navMusicText.innerText = "Play";
+            } else {
+                if (navMusicIcon) navMusicIcon.className = "fas fa-pause";
+                if (navMusicText) navMusicText.innerText = "Pause";
+            }
+        }
+
+        /* ================= COUNTDOWN LOGIC (Updated to December 4, 2026) ================= */
+        const targetDate = new Date("December 4, 2026 20:00:00").getTime();
+        setInterval(() => {
+            const diff = targetDate - new Date().getTime();
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        /* ================= ALL DATABASE SCRIPTS COMMENTED OUT ================= */
+        /*
+        const firebaseConfig = {
+            apiKey: "AIzaSyCB5tx5ffwZENpTqU9otGTvxjmlgqyjwQ",
+            authDomain: "ismail-yara-wedding.firebaseapp.com",
+            projectId: "ismail-yara-wedding",
+            storageBucket: "ismail-yara-wedding.firebasestorage.app",
+            messagingSenderId: "192107873346",
+            appId: "1:192107873346:web:db146674f6632ffb3759db"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const CLOUDINARY_CLOUD_NAME = "k0qku3iy"; 
+        const CLOUDINARY_UPLOAD_PRESET = "mirzam_uploads"; 
+        const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`;
+
+        const ACTIVE_PLAN = "Astra"; 
+        const PLAN_LIMITS = {
+            "Astra":  { totalPhotos: 50, totalVoice: 20, userMaxPhotos: 3, userMaxVoices: 1 },
+            "Aurora": { totalPhotos: 250, totalVoice: 100, userMaxPhotos: 5, userMaxVoices: 2 }
+        };
+
+        const MAX_TOTAL_PHOTOS = PLAN_LIMITS[ACTIVE_PLAN].totalPhotos;
+        const MAX_TOTAL_VOICES = PLAN_LIMITS[ACTIVE_PLAN].totalVoice;
+        const USER_MAX_PHOTOS = PLAN_LIMITS[ACTIVE_PLAN].userMaxPhotos;
+        const USER_MAX_VOICES = PLAN_LIMITS[ACTIVE_PLAN].userMaxVoices;
+
+        let totalPhotoCount = 0;
+        let totalVoiceCount = 0;
+
+        function compressImage(file, maxWidth = 800, quality = 0.6) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        canvas.toBlob((blob) => {
+                            if (blob) resolve(blob);
+                            else reject(new Error('Canvas compression failed'));
+                        }, 'image/webp', quality);
+                    };
+                    img.onerror = (err) => reject(err);
+                };
+                reader.onerror = (err) => reject(err);
+            });
+        }
+
+        const photoInput = document.getElementById('photo-upload-input');
+        const uploadBtn = document.getElementById('upload-photo-btn');
+        const photoGrid = document.getElementById('guest-photo-grid');
+        let myPhotoCount = 0;
+
+        uploadBtn.addEventListener('click', () => {
+            if (totalPhotoCount >= MAX_TOTAL_PHOTOS) {
+                alert(`The gallery is full (${MAX_TOTAL_PHOTOS} memories maximum).`);
+                return;
+            }
+            if (myPhotoCount >= USER_MAX_PHOTOS) {
+                alert(`You have reached your personal limit of ${USER_MAX_PHOTOS} uploads.`);
+                return;
+            }
+            photoInput.click();
+        });
+
+        photoInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                alert("Only photo uploads are allowed!");
+                photoInput.value = '';
+                return;
+            }
+
+            uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; display: block;"></i> UPLOADING...';
+
+            try {
+                let fileToUpload = await compressImage(file, 800, 0.6);
+                let fileName = 'photo.webp';
+                const formData = new FormData();
+                formData.append('file', fileToUpload, fileName);
+                formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+                const cloudinaryRes = await fetch(CLOUDINARY_UPLOAD_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                const cloudinaryData = await cloudinaryRes.json();
+                if (!cloudinaryData.secure_url) throw new Error("Cloudinary upload failed");
+
+                await db.collection("yj_photos").add({
+                    url: cloudinaryData.secure_url,
+                    type: 'image',
+                    ownerId: myUserId,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch (error) {
+                console.error("Upload error: ", error);
+                alert("Failed to upload. Please try again.");
+            } finally {
+                photoInput.value = ''; 
+                uploadBtn.innerHTML = '<i class="fas fa-camera-retro" style="font-size: 24px; margin-bottom: 10px; display: block;"></i> SHARE A PHOTO';
+            }
+        });
+
+        db.collection("yj_photos").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
+            photoGrid.innerHTML = '';
+            myPhotoCount = 0;
+            totalPhotoCount = querySnapshot.size; 
+            galleryImages = []; 
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                if (data.ownerId === myUserId) myPhotoCount++;
+                galleryImages.push(data.url); 
+
+                const item = document.createElement('div');
+                item.className = 'guest-photo-item';
+                item.setAttribute('onclick', `openLightbox('${data.url}')`);
+
+                let deleteHTML = '';
+                if (isAdmin || data.ownerId === myUserId) {
+                    deleteHTML = `<button class="delete-btn" onclick="event.stopPropagation(); deleteItem('yj_photos', '${doc.id}')">DELETE</button>`;
+                }
+
+                item.innerHTML = `
+                    ${deleteHTML}
+                    <img src="${data.url}" alt="Guest Memory">
+                `;
+                photoGrid.appendChild(item);
+            });
+        });
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let myVoiceCount = 0;
+
+        let recordTimer;
+        let secondsRecorded = 0;
+
+        const voiceBtn = document.getElementById('record-voice-btn');
+        const voiceText = document.getElementById('voice-status-text');
+        const voicesDisplay = document.getElementById('voice-messages-display');
+
+        voiceBtn.addEventListener('click', async () => {
+            if (!isRecording) {
+                if (totalVoiceCount >= MAX_TOTAL_VOICES) {
+                    alert(`The voice message inbox is full (${MAX_TOTAL_VOICES} messages maximum).`);
+                    return;
+                }
+                if (myVoiceCount >= USER_MAX_VOICES) {
+                    alert(`You have already shared a voice message (limit is ${USER_MAX_VOICES} per guest).`);
+                    return;
+                }
+
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    let options = {};
+                    if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+                        options = { mimeType: 'audio/webm;codecs=opus', audioBitsPerSecond: 32000 };
+                    } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+                        options = { mimeType: 'audio/mp4', audioBitsPerSecond: 32000 };
+                    }
+
+                    try {
+                        mediaRecorder = new MediaRecorder(stream, options);
+                    } catch (e) {
+                        mediaRecorder = new MediaRecorder(stream);
+                    }
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    secondsRecorded = 0;
+                    voiceBtn.style.background = '#e74c3c';
+                    voiceBtn.style.color = 'white';
+                    voiceBtn.style.borderColor = '#e74c3c';
+                    voiceText.innerText = 'RECORDING... 0s / 60s (TAP TO STOP)';
+
+                    recordTimer = setInterval(() => {
+                        secondsRecorded++;
+                        voiceText.innerText = `RECORDING... ${secondsRecorded}s / 60s (TAP TO STOP)`;
+                        if (secondsRecorded >= 60) {
+                            mediaRecorder.stop();
+                            isRecording = false;
+                            clearInterval(recordTimer);
+                        }
+                    }, 1000);
+
+                    mediaRecorder.addEventListener("dataavailable", event => {
+                        audioChunks.push(event.data);
+                    });
+
+                    mediaRecorder.addEventListener("stop", async () => {
+                        clearInterval(recordTimer); 
+                        voiceBtn.style.background = 'var(--white)';
+                        voiceBtn.style.color = 'var(--rose)';
+                        voiceBtn.style.borderColor = 'var(--rose)';
+                        voiceText.innerText = 'UPLOADING...';
+
+                        const audioBlob = new Blob(audioChunks); 
+                        audioChunks = [];
+
+                        try {
+                            const formData = new FormData();
+                            formData.append('file', audioBlob, 'voice.mp4');
+                            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+                            const cloudinaryRes = await fetch(CLOUDINARY_UPLOAD_URL, {
+                                method: 'POST',
+                                body: formData
+                            });
+                            const cloudinaryData = await cloudinaryRes.json();
+                            if (!cloudinaryData.secure_url) throw new Error("Cloudinary upload failed");
+
+                            await db.collection("yj_voice").add({
+                                url: cloudinaryData.secure_url,
+                                ownerId: myUserId,
+                                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                            });
+                        } catch (err) {
+                            console.error("Audio Upload error: ", err);
+                            alert("Failed to upload audio recording.");
+                        }
+
+                        voiceText.innerText = 'TAP TO RECORD';
+                    });
+                } catch (err) {
+                    alert("Microphone access denied or not supported.");
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                clearInterval(recordTimer); 
+            }
+        });
+
+        db.collection("yj_voice").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
+            voicesDisplay.innerHTML = '';
+            myVoiceCount = 0;
+            totalVoiceCount = querySnapshot.size; 
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                if (data.ownerId === myUserId) myVoiceCount++;
+
+                const item = document.createElement('div');
+                item.className = 'voice-item';
+
+                let deleteHTML = '';
+                if (isAdmin || data.ownerId === myUserId) {
+                    deleteHTML = `<button class="delete-btn" style="position:relative; top:0; right:0;" onclick="deleteItem('yj_voice', '${doc.id}')">DELETE</button>`;
+                }
+
+                item.innerHTML = `
+                    <audio controls src="${data.url}"></audio>
+                    ${deleteHTML}
+                `;
+                voicesDisplay.appendChild(item);
+            });
+        });
+
+        window.deleteItem = async function(collectionName, docId) {
+            if (!confirm('Are you sure you want to delete this?')) return;
+            try {
+                await db.collection(collectionName).doc(docId).delete();
+            } catch (error) {
+                console.error("Error deleting item:", error);
+            }
+        };
+
+        const wishForm = document.getElementById('guestbook-form');
+        const wishesDisplay = document.getElementById('wishes-display');
+
+        wishForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            db.collection("yj_wishes").add({
+                ownerId: myUserId,
+                name: document.getElementById('guest-name').value,
+                wish: document.getElementById('guest-wish').value,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                wishForm.reset(); 
+            }).catch((error) => console.error("Error writing document: ", error));
+        });
+
+        db.collection("yj_wishes").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
+            wishesDisplay.innerHTML = '';
+            querySnapshot.forEach((doc) => {
+                const item = doc.data();
+                const card = document.createElement('div');
+                card.className = 'wish-card';
+                
+                const deleteBtn = (item.ownerId === myUserId || isAdmin) 
+                    ? `<button class="delete-wish-btn" onclick="deleteItem('yj_wishes', '${doc.id}')">Delete</button>` 
+                    : '';
+                    
+                card.innerHTML = `<h4>${item.name}</h4><p>"${item.wish}"</p>${deleteBtn}`;
+                wishesDisplay.appendChild(card);
+            });
+        });
+        */
+
+    </script>
+</body>
+</html>
