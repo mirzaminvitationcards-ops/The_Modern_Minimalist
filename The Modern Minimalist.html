@@ -748,17 +748,21 @@
 
         const ACTIVE_PLAN = "Astra"; 
         const PLAN_LIMITS = {
-            "Astra":  { totalPhotos: 50, totalVoice: 20, userMaxPhotos: 3, userMaxVoices: 1 },
-            "Aurora": { totalPhotos: 250, totalVoice: 100, userMaxPhotos: 5, userMaxVoices: 2 }
+            "Astra":  { totalPhotos: 50, totalVoice: 20, totalWishes: 100, userMaxPhotos: 3, userMaxVoices: 1, userMaxWishes: 1 },
+            "Aurora": { totalPhotos: 250, totalVoice: 100, totalWishes: 500, userMaxPhotos: 5, userMaxVoices: 2, userMaxWishes: 3 }
         };
 
         const MAX_TOTAL_PHOTOS = PLAN_LIMITS[ACTIVE_PLAN].totalPhotos;
         const MAX_TOTAL_VOICES = PLAN_LIMITS[ACTIVE_PLAN].totalVoice;
+        const MAX_TOTAL_WISHES = PLAN_LIMITS[ACTIVE_PLAN].totalWishes;
         const USER_MAX_PHOTOS = PLAN_LIMITS[ACTIVE_PLAN].userMaxPhotos;
         const USER_MAX_VOICES = PLAN_LIMITS[ACTIVE_PLAN].userMaxVoices;
+        const USER_MAX_WISHES = PLAN_LIMITS[ACTIVE_PLAN].userMaxWishes;
 
         let totalPhotoCount = 0;
         let totalVoiceCount = 0;
+        let totalWishCount = 0;
+        let myWishCount = 0;
 
         function compressImage(file, maxWidth = 800, quality = 0.6) {
             return new Promise((resolve, reject) => {
@@ -1019,6 +1023,16 @@
 
         wishForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            if (totalWishCount >= MAX_TOTAL_WISHES) {
+                alert(`The guestbook is full (${MAX_TOTAL_WISHES} wishes maximum).`);
+                return;
+            }
+            if (myWishCount >= USER_MAX_WISHES) {
+                alert(`You have reached your personal limit of ${USER_MAX_WISHES} wish(es).`);
+                return;
+            }
+
             db.collection("yj_wishes").add({
                 ownerId: myUserId,
                 name: document.getElementById('guest-name').value,
@@ -1031,8 +1045,13 @@
 
         db.collection("yj_wishes").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
             wishesDisplay.innerHTML = '';
+            totalWishCount = querySnapshot.size;
+            myWishCount = 0;
+
             querySnapshot.forEach((doc) => {
                 const item = doc.data();
+                if (item.ownerId === myUserId) myWishCount++;
+
                 const card = document.createElement('div');
                 card.className = 'wish-card';
                 
