@@ -312,6 +312,33 @@
             .time-unit span { font-size: 22px; }
             .floating-nav { bottom: 15px; }
         }
+/* =========================================
+           GO BACK BUTTON (ENGLISH)
+           ========================================= */
+        .go-back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: var(--card-bg);
+            color: var(--rose);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        .go-back-btn:hover {
+            background: var(--rose);
+            color: var(--white);
+        }
+
     </style>
 </head>
 <body>
@@ -323,6 +350,11 @@
         <img id="lightbox-img" src="" alt="Fullscreen View">
         <button class="lightbox-nav" id="lightbox-next" onclick="changeSlide(1)">&#10095;</button>
     </div>
+
+    <!-- GO BACK BUTTON -->
+    <button onclick="closeInvitation()" class="go-back-btn" title="Go Back">
+        <i class="fas fa-arrow-left"></i>
+    </button>
 
     <!-- COMPLETELY OPAQUE OVERLAY -->
     <div id="blur-overlay">
@@ -471,8 +503,7 @@
             <div id="wishes-display" class="wishes-container"></div>
         </div>
         
-        <!-- GO BACK BUTTON -->
-        <button onclick="window.location.reload()" class="oval-btn">GO BACK</button>
+        
         
         <!-- MIRZAM CREDIT BADGE -->
         <div class="credit-badge-container">
@@ -611,6 +642,26 @@
                 }
                 autoScroll();
             }, 1000); 
+        }
+
+       function closeInvitation() {
+            // Stop auto-scrolling
+            stopAutoScroll();
+            
+            // Pause the music and reset it to the beginning (0 seconds)
+            weddingAudio.pause();
+            weddingAudio.currentTime = 0; 
+            updateMusicUI();
+            
+            // Scroll instantly back to the top
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Show the blur overlay again
+            const overlay = document.getElementById('blur-overlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 50);
         }
 
         /* --- LIGHTBOX GALLERY NAVIGATION LOGIC --- */
